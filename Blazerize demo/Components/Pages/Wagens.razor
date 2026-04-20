@@ -8,16 +8,20 @@
         <div>
             <div class="d-flex allign-items-center gap-3">
                 <div class="form-group row m-0 d-flex align-items-center">
-                    <DateInput TValue="DateTime?" @bind-Value="@Date" InputFormat="dd.MM.yyyy" DisplayFormat="dd.MM.yyyy" />
+                    <DatePicker TValue="DateTime" @bind-Value="@SelectedDate"/>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div class="border p-2">
+    <h5 class="h5 ms-2">@Name</h5>
+</div>
 
 
 
 @code {
-    DateTime? Date = DateTime.Now;
+    DateTime SelectedDate = DateTime.Now;
+    string Name = "Jama";
 }
 
