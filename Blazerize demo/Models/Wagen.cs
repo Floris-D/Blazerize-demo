@@ -18,6 +18,5 @@
             Vrijgave = 0,
             Selectief = 1,
         };
-
     }
 }
