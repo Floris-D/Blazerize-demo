@@ -4,14 +4,16 @@ using Blazorise.DataGrid;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.QuickGrid;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using System.Configuration;
 
 
 namespace Blazerize_demo.Components.Pages.WagenPages
 {
-    public partial class Index
+    public partial class Index(IDbContextFactory<WagensContext> dbContextFactory)
     {
         [Inject]
-        public IDbContextFactory<WagensContext> DbFactory { get; set; }
+        private IDbContextFactory<WagensContext> _contextFactory { get; set; }
         private DateTime SelectedDate;
         private List<Wagen> Wagens;
 
@@ -29,9 +31,9 @@ namespace Blazerize_demo.Components.Pages.WagenPages
 
         public async Task<List<Wagen>> GetAllWagens()
         {
-            using (var db = new WagensContext())
-            {
-                var wagens = await db.Wagens.OrderBy(w => w.Kenteken).ToListAsync();
+            using (var conn = _contextFactory.CreateDbContext())
+            { 
+                var wagens = await conn.Wagens.OrderBy(w => w.Kenteken).ToListAsync();
                 return wagens;
             }
         }

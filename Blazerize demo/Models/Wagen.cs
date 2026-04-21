@@ -2,7 +2,7 @@
 
 namespace Blazerize_demo.Models
 {
-    public class Wagen : Bedrijf
+    public class Wagen
     {
         [Key]
         public int Id { get; set; }
@@ -15,12 +15,17 @@ namespace Blazerize_demo.Models
         public int NoReads { get; set; }
         public int BlacklistContainers { get; set;  }
         public int TotaalKg { get; set; }
-        public enum Diftar
-        {
-            Vrijgave = 0,
-            Selectief = 1,
-        };
-        public DateTime? CreateDatum { get; set; }
-        public DateTime? UpdateDatum { get; set; }
+        [EnumDataType(typeof(Diftars))]
+        public Diftars Diftar { get; set; }
+        public DateTime? CreateDatum { get; set; } = DateTime.Now;
+        public DateTime? UpdateDatum { get; set; } = DateTime.Now;
+
+
     }
+
+    public enum Diftars
+    {
+        Vrijgave = 0,
+        Selectief = 1,
+    };
 }

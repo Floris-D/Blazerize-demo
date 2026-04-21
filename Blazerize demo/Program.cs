@@ -7,8 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Blazerize_demo.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContextFactory<Blazerize_demoContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Blazerize_demoContext") ?? throw new InvalidOperationException("Connection string 'Blazerize_demoContext' not found.")));
+builder.Services.AddDbContextFactory<WagensContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("MyLocalDb") ?? throw new InvalidOperationException("Connection string 'MyLocalDb' not found.")));
 
 builder.Services.AddQuickGridEntityFrameworkAdapter();
 
