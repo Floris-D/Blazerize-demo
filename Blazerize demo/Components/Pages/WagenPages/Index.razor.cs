@@ -32,8 +32,11 @@ namespace Blazerize_demo.Components.Pages.WagenPages
         public async Task<List<Wagen>> GetAllWagens()
         {
             using (var conn = _contextFactory.CreateDbContext())
-            { 
-                var wagens = await conn.Wagens.OrderBy(w => w.Kenteken).ToListAsync();
+            {
+                var wagens = await conn.Wagens.OrderBy(w => w.Kenteken)
+                    .Include(wagen => wagen.Datums)
+                    .Include(wagen => wagen.Labels)
+                    .ToListAsync();
                 return wagens;
             }
         }

@@ -24,14 +24,8 @@
             </DataGridCommandColumn>
             <DataGridColumn TItem="Wagen" Field="Kenteken" Caption="Kenteken" />
             <DataGridColumn TItem="Wagen" Field="Versie" Caption="Versie" />
-            <DataGridColumn TItem="Wagen" Field="Labels" Caption="Labels" />
-            <DataGridColumn TItem="Wagen" Field="Online" Caption="Online" />
-            <DataGridColumn TItem="Wagen" Field="Lock" Caption="Lock" />
-            <DataGridColumn TItem="Wagen" Field="GeldigeLedigingen" Caption="GeldigeLedigingen" />
-            <DataGridColumn TItem="Wagen" Field="NoReads" Caption="NoReads" />
-            <DataGridColumn TItem="Wagen" Field="BlacklistContainers" Caption="BlacklistContainers" />
-            <DataGridColumn TItem="Wagen" Field="TotaalKg" Caption="TotaalKg" />
-            <DataGridColumn TItem="Wagen" Field="Diftar" Caption="Diftar" />
+            <DataGridColumn TItem="Wagen" Field="@nameof(Wagen.Labels)" Caption="Labels" />
+            <DataGridColumn TItem="Wagen" Field="@nameof(Wagen.Diftar)" Caption="Diftar" />
         </ChildContent>
         <EmptyTemplate>
             <Div Class="box">No records were found.</Div>

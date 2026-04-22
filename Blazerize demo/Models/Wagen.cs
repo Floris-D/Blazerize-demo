@@ -1,26 +1,21 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Blazerize_demo.Models
 {
+    [Table("Wagen")]
     public class Wagen
     {
         [Key]
         public int Id { get; set; }
-        public string Kenteken { get; set; } = string.Empty;
-        public string Versie { get; set; } = string.Empty;
-        public IEnumerable<Label>? Labels { get; set; }
-        public bool Online { get; set; }
-        public bool Lock { get; set; }
-        public int GeldigeLedigingen { get; set; }
-        public int NoReads { get; set; }
-        public int BlacklistContainers { get; set;  }
-        public int TotaalKg { get; set; }
+        public required string Kenteken { get; set; } = string.Empty;
+        public required string Versie { get; set; } = string.Empty;
+        public  ICollection<Label>? Labels { get; set; }
+        public  ICollection<Datum>? Datums { get; set; }
         [EnumDataType(typeof(Diftars))]
         public Diftars Diftar { get; set; }
-        public DateTime? CreateDatum { get; set; } = DateTime.Now;
-        public DateTime? UpdateDatum { get; set; } = DateTime.Now;
-
-
+        public required DateTime? CreateDatum { get; set; } 
+        public required DateTime? UpdateDatum { get; set; }
     }
 
     public enum Diftars
